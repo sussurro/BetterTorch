@@ -1,7 +1,8 @@
-# Host Payload (Stageless JavaScript / VBScript)
-#
-# Author: Vincent Yiu (@vysecurity)
+# BetterTorch plugin for Cobalt Strike targeted at Word/Excel
+# Author: Ryan Linn (@sussurro)
+# CactusTorch Author: Vincent Yiu (@vysecurity)
 # Credits to @armitagehacker for the original script
+
 sub range
 {
     return lambda(
